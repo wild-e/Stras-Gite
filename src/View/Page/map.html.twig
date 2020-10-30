@@ -1,12 +1,12 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-Nous trouver à Strasbourg | {{ parent() }}
-{% endblock %}
+Nous trouver à Strasbourg | {{ parent() }}{% endblock %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
+    {{ parent() }}
+    {# <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css"> #}
     <link rel="stylesheet" href="../assets/css/Map-Clean.css">
 {% endblock %}
 
@@ -22,7 +22,7 @@ Nous trouver à Strasbourg | {{ parent() }}
     </div>
 {% endblock %}
 
-{% block javascript %}
+{# {% block javascript %}
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-{% endblock %}
+{% endblock %} #}
