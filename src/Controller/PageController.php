@@ -23,4 +23,9 @@ class PageController extends AbstractController
     {
         return $this->twig->render('Page/activities.html.twig');
     }
+
+    public function map()
+    {
+        return $this->twig->render('Page/map.html.twig');
+    }
 }
