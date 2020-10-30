@@ -1,6 +1,8 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Nous trouver à Strasbourg | Stras'gîte{% endblock %}
+{% block title %}
+Nous trouver à Strasbourg | {{ parent() }}
+{% endblock %}
 
 {% block stylesheet %}
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">

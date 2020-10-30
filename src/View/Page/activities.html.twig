@@ -1,12 +1,14 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Activités en Alsace | Stras'gîte{% endblock %}
+{% block title %}
+Activités en Alsace | {{ parent() }}
+{% endblock %}
 
 {% block stylesheet %}
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/Projects-Clean.css">
-
+    {{ parent() }}
 {% endblock %}
 
 {% block content %}<div class="projects-clean">
@@ -40,5 +42,4 @@
 {% block javascript %}
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../assets/js/A-working-Rating-option-for-Contact-Forms.js"></script>
 {% endblock %}
