@@ -4,24 +4,11 @@
   background-color: whitesmoke;
 }
 
-.footericons {
-  font-size: 16px;
-}
 
 .footerheadings {
   font-size: 16px;
   margin-top: 4px;
 }
-
-a {
-  color: #000000;
-}
-
-a:hover {
-  color: #444444;
-  text-decoration: underline;
-}
-
 
 #copyrightheading {
   text-align: center;
