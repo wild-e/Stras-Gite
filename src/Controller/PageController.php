@@ -28,4 +28,9 @@ class PageController extends AbstractController
     {
         return $this->twig->render('Page/map.html.twig');
     }
+
+    public function chambre()
+    {
+        return $this->twig->render('Page/chambre.html.twig');
+    }
 }
