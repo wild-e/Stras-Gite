@@ -12,13 +12,14 @@
 }
 
 .strasGite{
-    height: 208px;
-    width: 276px;
+    height: 214px;
+    width: 273px;
 }
 
 .showcase-text {
     text-align: center;
 }
+
 
 @media screen and (max-width: 1024px){
     .w-100 {
