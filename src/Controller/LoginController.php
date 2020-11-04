@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 use App\Model\UserManager;
+use App\Controller\UserController;
+
 
 class LoginController extends AbstractController
 {
@@ -21,7 +23,7 @@ class LoginController extends AbstractController
                 $_SESSION['email'] = $login['email'];
                 $_SESSION['password'] = $login['password'];
                 $_SESSION['firstname'] = $login['firstname'];
-                // Rajouter toutes les données utilisaturs de la BDDD à récupérer
+                $_SESSION['is_admin'] = $login['is_admin'];
                 header('Location:/');
 
             }else{
@@ -29,5 +31,17 @@ class LoginController extends AbstractController
             }
         }
         return $this->twig->render('Login/login.html.twig');
+    }
+
+    public function logout()
+    {
+        if($_SESSION)
+        {
+            $_SESSION['email'] = "";
+            $_SESSION['password'] = "";
+            $_SESSION['firstname'] = "";
+            $_SESSION['is_admin'] = "";
+        }
+        header('Location:/');
     }
 }
