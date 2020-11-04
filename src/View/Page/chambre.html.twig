@@ -1,5 +1,12 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+Nos chambres - {{ parent() }}
+{% endblock %}
+
+{% block stylesheet %}
+    {{ parent() }}
+{% endblock %}
 
 {% block content %}
 
@@ -9,7 +16,7 @@
     <div class="projects-horizontal">
         <div class="container text-right">
             <div class="intro">
-                <h4 class="text-center">Suite de luxe</h4>
+                <h1 class="text-center">Suite de luxe</h1>
                 <p class="text-center">Réservez votre chambre 24h/24 en ligne !<br>Passez un moment unique au cœur de Strasbourg</p>
             </div>
                     <div class="row">
