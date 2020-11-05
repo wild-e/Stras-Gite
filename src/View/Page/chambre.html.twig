@@ -1,7 +1,11 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}
-    Suite de luxe {{ parent() }}
+{% block stylesheet %}
+
+    {{ parent() }}
+
+    <link rel="stylesheet" href="../assets/css/style-chambre.css"> {
+
 {% endblock %}
 
 {% block content %}
@@ -13,7 +17,7 @@
                 <p class="text-center">Réservez votre chambre 24h/24 en ligne !<br>Passez un moment unique au cœur de Strasbourg</p>
             </div>
                     <div class="row">
-                        <div class="col-md-10 col-lg-7 col-xl-7 offset-md-1 offset-lg-0 offset-xl-1"><a class="text-left" href="#"><alt img class="img-fluid chambre" src="../assets/images/lit-3070P.bed.jpg"></alt></a>
+                        <div class="col-md-10 col-lg-7 col-xl-7 offset-md-1 offset-lg-0 offset-xl-1"><a class="text-left" href="#"><img class="img-fluid chambre" src="/assets/images/luxe.jpg"></a>
 
                             <h6 class="text name"><br>Chambre à coucher moderne</h6>
                             <p class="text description">Cette suite de luxe est la chambre idéale pour se reposer et passer un agréable moment à Strasbourg.
