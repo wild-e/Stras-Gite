@@ -25,7 +25,6 @@ class LoginController extends AbstractController
                 $_SESSION['firstname'] = $login['firstname'];
                 $_SESSION['is_admin'] = $login['is_admin'];
                 header('Location:/');
-
             } else {
                 header('Location:/Login/login');
             }
