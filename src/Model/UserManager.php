@@ -7,7 +7,7 @@ namespace App\Model;
  */
 class UserManager extends AbstractManager
 {
-    const TABLE = 'clients';
+    public const TABLE = 'clients';
 
     // initializes this class
     public function __construct()
