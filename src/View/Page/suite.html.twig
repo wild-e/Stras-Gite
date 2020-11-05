@@ -4,6 +4,14 @@
     Suite standard {{ parent() }}
 {% endblock %}
 
+{% block stylesheet %}
+
+{{ parent() }}
+
+    <link rel="stylesheet" href="../assets/css/style-chambre.css"> {
+
+{% endblock %}
+
 {% block content %}
 
     <p style="margin: 102px;"></p>
@@ -13,7 +21,7 @@
                 <p class="text-center">Réservez votre chambre 24h/24 en ligne !<br>Passez un moment unique au cœur de Strasbourg</p>
             </div>
                     <div class="row">
-                        <div class="col-md-10 col-lg-7 col-xl-7 offset-md-1 offset-lg-0 offset-xl-1"><a class="text-left" href="#"><img class="img-fluid chambre" src="/assets2/img/standard2.jpg"></a>
+                        <div class="col-md-10 col-lg-7 col-xl-7 offset-md-1 offset-lg-0 offset-xl-1"><a class="text-left" href="#"><img class="img-fluid chambre" src="/assets/images/standard2.jpg"></a>
                             <h6 class="text name"><br><B>Chambre à coucher moderne</B></h6>
                             <p class="text description">Cette suite de luxe est la chambre idéale pour se reposer et passer un agréable moment à Strasbourg.
                             Elle comprend : <br>
@@ -30,7 +38,7 @@
                         </div>
         </div>
                     <div class="row">
-                        <div class="col-md-12 col-lg-7 offset-md-1 offset-lg-0 offset-xl-4"><a href="#"><img class="img-fluid sdb"  src="/assets2/img/sdb2.jpg"></a>
+                        <div class="col-md-12 col-lg-7 offset-md-1 offset-lg-0 offset-xl-4"><a href="#"><img class="img-fluid sdb"  src="/assets/images/sdb2.jpg"></a>
                             <h6 class="text name"><br><B>Salle de bain</B></h6>
                             <p class="text description">Une salle de bain ultra moderne équipée de matériels très haut de gamme.<br> Elle comprend : </p>
                             <ul class="sdbb">
