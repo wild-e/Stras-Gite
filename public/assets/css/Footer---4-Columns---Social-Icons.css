@@ -1,0 +1,18 @@
+#footer {
+  text-align: center;
+  padding: 10px 0px;
+  background-color: whitesmoke;
+}
+
+
+.footerheadings {
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+#copyrightheading {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 5px;
+}
+

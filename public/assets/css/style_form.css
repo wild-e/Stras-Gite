@@ -1,0 +1,32 @@
+h1 {
+    text-align: center;
+}
+
+form .btn {
+    background: #56c6c6;
+    border-radius: 20px;
+    font-size: inherit;
+    color: #fff !important;
+    box-shadow: none;
+    border: none;
+    text-shadow: none;
+    padding: 8px 20px;
+    transition: background-color 0.25s;
+}
+
+form .btn:hover, form .btn:focus {
+    background: #66d7d7;
+}
+
+label {
+    font-weight: bold;
+}
+
+.contact {
+    background:no-repeat center url("../images/general/cathedrale.jpg");
+    background-size: cover;
+    height: 705px;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+}
