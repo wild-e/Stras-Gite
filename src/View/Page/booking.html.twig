@@ -12,7 +12,7 @@ Réserver chez Stras'Gîte | {{ parent() }}
 
 {% block content %}
 <div class="login-clean">
-    <form method="post">
+    <form method="post" action="../User/summary">
         <h1 class="text-center">Je réserve</h1>
         <small style="visibility:hidden" class="form-text text-muted">Help text for a form field.</small>
         <div class="form-group">
@@ -26,8 +26,8 @@ Réserver chez Stras'Gîte | {{ parent() }}
         <div class="form-group">
         {# fourrer une condition: si le client vient d'une chambre le choix est déjà fait  #}
             <label for="room">Choix de la chambre</label>
-            <select name="roomSelect" id="room">
-                <option value="">--Choisissez une chambre--</option>
+            <select class="form-control" name="roomSelect" id="room">
+                <option value="">--</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -36,8 +36,8 @@ Réserver chez Stras'Gîte | {{ parent() }}
         </div>
         <div class="form-group">
             <label for="guest">Nombre de personnes</label>
-            <select name="guestSelect" id="guest">
-                <option value="">--Choisissez le nombre d'invités--</option>
+            <select class="form-control" name="guestSelect" id="guest">
+                <option value="">--</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -46,8 +46,9 @@ Réserver chez Stras'Gîte | {{ parent() }}
         </div>
         <div class="form-group">
             <label for="childGuest">Nombre d'enfants</label>
-            <select name="childGuestSelect" id="childGuest">
-                <option value="">--Choisissez le nombre d'enfants--</option>
+            <select class="form-control" name="childGuestSelect" id="childGuest">
+                <option value="">--</option>
+                <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

@@ -17,4 +17,18 @@ class UserController extends AbstractController
             return $this->twig->render('User/writeReview.html.twig');
         }
     }
+
+    public function summary()
+    {
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            return $this->twig->render('User/summary.html.twig', ['post' => $_POST]);
+        }
+    }
+
+    public function checkout()
+    {
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            return $this->twig->render('User/checkout.html.twig', ['post' => $_POST]);
+        }
+    }
 }

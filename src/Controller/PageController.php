@@ -30,7 +30,6 @@ class PageController extends AbstractController
         return $this->twig->render('Page/map.html.twig');
     }
 
-
     public function chambre()
     {
         return $this->twig->render('Page/chambre.html.twig');
@@ -43,6 +42,7 @@ class PageController extends AbstractController
 
     public function booking()
     {
-        return $this->twig->render('Page/booking.html.twig');
-    }
+            return $this->twig->render('Page/booking.html.twig');
+        }
+
 }
