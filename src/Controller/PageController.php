@@ -43,6 +43,5 @@ class PageController extends AbstractController
     public function booking()
     {
             return $this->twig->render('Page/booking.html.twig');
-        }
-
+    }
 }
