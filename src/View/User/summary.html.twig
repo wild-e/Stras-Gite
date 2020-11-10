@@ -89,27 +89,27 @@ Réserver chez Stras'Gîte | {{ parent() }}
         <small style="visibility:hidden" class="form-text text-muted">Help text for a form field.</small>
         <div class="form-group">
             <label for="lastname">Nom</label>
-            <input type="text" class="form-control" name="lastname"/>
+            <input type="text" class="form-control" name="lastname" required/>
         </div>
         <div class="form-group">
             <label for="firstname">Prénom</label>
-            <input class="form-control" type="text" name="firstname"/>
+            <input class="form-control" type="text" name="firstname" required/>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" type="text" name="email"/>
+            <input class="form-control" type="email" name="email" maxlength="250" required/>
         </div>
         <div class="form-group">
             <label for="phoneNumber">Télèphone</label>
-            <input class="form-control" type="text" name="phoneNumber"/>
+            <input class="form-control" type="text" name="phoneNumber" maxlength="10" required/>
         </div>
         <div class="form-group">
             <label for="password">Mot de passe</label>
-            <input class="form-control" type="text" name="password"/>
+            <input class="form-control" type="password" name="password" minlength="10" maxlength="100" required/>
         </div>
             <div class="form-group">
-            <label for="passwordCheck">Veuillez rentrer à nouveau le mot de passe</label>
-            <input class="form-control" type="text" name="passwordCheck"/>
+            <label for="passwordCheck">Confirmer le mot de passe</label>
+            <input class="form-control" type="password" name="passwordCheck" minlength="10" maxlength="100" required/>
         </div>
         {# // Send previous form Post variable #}
         <input name="roomSelect" value="{{ post.roomSelect }}" type="text" style="visibility:hidden">

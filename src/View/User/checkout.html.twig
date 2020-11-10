@@ -7,6 +7,7 @@ Confirmation de réservation | {{ parent() }}
 {% block stylesheet %}
     {{ parent() }}
     <link rel="stylesheet" href="../assets/css/Login-Form-Clean.css">
+    <meta http-equiv="refresh" content="10;URL=/"> 
 {% endblock %}
 
 {% block content %}
@@ -16,7 +17,7 @@ Confirmation de réservation | {{ parent() }}
         <h1 class="text-center">Confirmation</h1>
         </div>
         <p class="text-center">
-        Merci {{ post.firstname }} {{ post.lastname}}.
+        Merci {{ post.firstname }} {{ post.lastname }}.
         </p>
         <p class="text-center">
         Votre réservation a bien été prise en compte pour la chambre {{ post.roomSelect }} 

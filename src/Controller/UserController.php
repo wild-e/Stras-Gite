@@ -21,6 +21,10 @@ class UserController extends AbstractController
     public function summary()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            //reverse date to please french people
+            $_POST['arrival'] = \App\Model\BookingManager::reverseDate($_POST['arrival']);
+            $_POST['departure'] = \App\Model\BookingManager::reverseDate($_POST['departure']);
             return $this->twig->render('User/summary.html.twig', ['post' => $_POST]);
         }
     }
