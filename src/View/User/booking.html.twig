@@ -1,0 +1,76 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+Mes réservations | {{ parent() }}
+{% endblock %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="../assets/css/activities-clean.css">
+{% endblock %}
+
+{% block content %}
+<div class="projects-clean">
+        <div class="container text-right">
+            <div class="intro">
+                <h2 class="text-center text-dark">Mes Réservations</h2>
+            </div>
+        </div>
+</div>
+    <div class="container-fluid" style="box-shadow: 0px 0px;margin-top: 25px;border-style: none;">
+        <div style="border-style: solid;">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Informations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>N° client</th>
+                            <td>Cell 2</td>
+                        </tr>
+                        <tr>
+                            <th>Nom Prénom</th>
+                            <td>Cell 4</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>Cell 4</td>
+                        </tr>
+                        <tr>
+                            <th>Télèphone</th>
+                            <td>Cell 4</td>
+                        </tr>
+                        <tr>
+                            <th>Logement</th>
+                            <td>Cell 4</td>
+                        </tr>
+                        <tr>
+                            <th>N° de réservation</th>
+                            <td>Cell 4</td>
+                        </tr>
+                        <tr>
+                            <th>Date d'entrée</th>
+                            <td>Cell 4</td>
+                        </tr>
+                        <tr>
+                            <th>Date de sortie</th>
+                            <td>Cell 4</td>
+                        </tr>
+                        <tr>
+                            <th>Nbr de nuits</th>
+                            <td>Cell 4</td>
+                        </tr>
+                        <tr>
+                            <th>Prix</th>
+                            <td>Cell 4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
