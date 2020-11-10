@@ -12,7 +12,7 @@ Réserver chez Stras'Gîte | {{ parent() }}
 
 {% block content %}
 <div class="login-clean">
-    <form method="post" action="">
+    <form method="post" action="../User/checkout">
     {# Summary of last page  #}
         <h1 class="text-center">Résumé</h1>
         <br>
@@ -62,7 +62,7 @@ Réserver chez Stras'Gîte | {{ parent() }}
                 <p class="text">Room Service 24/24h</p>
             </div>
             <div class="col-sm-2">
-                <select name="childGuestSelect">
+                <select name="serviceSelect">
                     <option value="1">1</option>
                     <option value="0">0</option>
                 </select>
@@ -111,7 +111,10 @@ Réserver chez Stras'Gîte | {{ parent() }}
             <label for="passwordCheck">Veuillez rentrer à nouveau le mot de passe</label>
             <input class="form-control" type="text" name="passwordCheck"/>
         </div>
-
+        {# // Send previous form Post variable #}
+        <input name="roomSelect" value="{{ post.roomSelect }}" type="text" style="visibility:hidden">
+        <input name="arrival" value="{{ post.arrival }}" type="text" style="visibility:hidden">
+        <input name="departure" value="{{ post.departure }}" type="text" style="visibility:hidden">
         <div class="form-group">
             <button class="btn btn-light active btn-block" type="submit" name="checkout">Confirmer ma réservation</button>
         </div>
