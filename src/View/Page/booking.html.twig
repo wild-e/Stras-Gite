@@ -7,6 +7,7 @@ Réserver chez Stras'Gîte | {{ parent() }}
 {% block stylesheet %}
     {{ parent() }}
     <link rel="stylesheet" href="../assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 {% endblock %}
 
 {% block content %}
@@ -16,11 +17,11 @@ Réserver chez Stras'Gîte | {{ parent() }}
         <small style="visibility:hidden" class="form-text text-muted">Help text for a form field.</small>
         <div class="form-group">
             <label for="arrival"> Arrivée </label>
-            <input class="form-control" type="text"id="arrival" name="arrival">
+            <input type="text" class="form-control" name="arrival"/>
         </div>
         <div class="form-group">
             <label for="departure"> Départ </label>
-            <input class="form-control" type="text" name="departure">
+            <input class="form-control" type="text" name="departure"/>
         </div>
         <div class="form-group">
         {# fourrer une condition: si le client vient d'une chambre le choix est déjà fait  #}
@@ -59,4 +60,41 @@ Réserver chez Stras'Gîte | {{ parent() }}
         <a class="forgot" style="visibility:hidden" href="#">Mot de passe oublié ?</a>
     </form>
 </div>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    
+<script>
+// date picker for arrival 
+$(function() {
+  $('input[name="arrival"]').daterangepicker({
+    "singleDatePicker": true,
+    "startDate": "10/11/2020",
+    opens: 'left',
+    "locale": {
+        "format": "DD/MM/YYYY",
+    },
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+
+// date picker for departure 
+$(function() {
+  $('input[name="departure"]').daterangepicker({
+    "singleDatePicker": true,
+    "startDate": "10/11/2020",
+    opens: 'left',
+    "locale": {
+        "format": "DD/MM/YYYY",
+    },
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+</script>
 {% endblock %}
