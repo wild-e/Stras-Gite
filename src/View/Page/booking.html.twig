@@ -1,0 +1,62 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+Réserver chez Stras'Gîte | {{ parent() }}
+{% endblock %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="../assets/css/Login-Form-Clean.css">
+{% endblock %}
+
+{% block content %}
+<div class="login-clean">
+    <form method="post">
+        <h1 class="text-center">Je réserve</h1>
+        <small style="visibility:hidden" class="form-text text-muted">Help text for a form field.</small>
+        <div class="form-group">
+            <label for="arrival"> Arrivée </label>
+            <input class="form-control" type="text"id="arrival" name="arrival">
+        </div>
+        <div class="form-group">
+            <label for="departure"> Départ </label>
+            <input class="form-control" type="text" name="departure">
+        </div>
+        <div class="form-group">
+        {# fourrer une condition: si le client vient d'une chambre le choix est déjà fait  #}
+            <label for="room">Choix de la chambre</label>
+            <select name="roomSelect" id="room">
+                <option value="">--Choisissez une chambre--</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="guest">Nombre de personnes</label>
+            <select name="guestSelect" id="guest">
+                <option value="">--Choisissez le nombre d'invités--</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>        
+        </div>
+        <div class="form-group">
+            <label for="childGuest">Nombre d'enfants</label>
+            <select name="childGuestSelect" id="childGuest">
+                <option value="">--Choisissez le nombre d'enfants--</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>        
+        </div>
+        <div class="form-group">
+            <button class="btn btn-light active btn-block" type="submit" name="checkout">Accéder à mon récapitulatif</button>
+        </div>
+        <a class="forgot" style="visibility:hidden" href="#">Mot de passe oublié ?</a>
+    </form>
+</div>
+{% endblock %}
