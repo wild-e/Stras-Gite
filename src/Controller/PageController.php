@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: aurelwcs
@@ -29,10 +30,12 @@ class PageController extends AbstractController
         return $this->twig->render('Page/map.html.twig');
     }
 
+
     public function chambre()
     {
         return $this->twig->render('Page/chambre.html.twig');
     }
+
 
     public function luxe()
     {
@@ -47,5 +50,10 @@ class PageController extends AbstractController
     public function suite()
     {
         return $this->twig->render('Page/suite.html.twig');
+
+    public function contact()
+    {
+        return $this->twig->render('Page/contact.html.twig');
+
     }
 }
