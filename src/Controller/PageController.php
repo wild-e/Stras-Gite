@@ -44,11 +44,9 @@ class PageController extends AbstractController
     {
         // setting minDate and maxDate for input date 
         $minDate = new \DateTime();
-        $minDate = $minDate->modify('+ 1 day');
         $maxDate = clone $minDate;
-        $minDate = $minDate->format('Y-m-d');
-        $maxDate = $maxDate->modify('+ 1 year');
-        $maxDate = $maxDate->format('Y-m-d');
+        $minDate = $minDate->modify('+ 1 day')->format('Y-m-d');
+        $maxDate = $maxDate->modify('+ 1 year')->format('Y-m-d');
         return $this->twig->render('Page/booking.html.twig', ['minDate' => $minDate, 'maxDate' => $maxDate]);
     }
 }
