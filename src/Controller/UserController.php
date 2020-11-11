@@ -59,7 +59,7 @@ class UserController extends AbstractController
             //Reversing date format to please french people UX/UI
                 $_POST['arrival'] = $arrival->format('d/m/Y');
                 $_POST['departure'] = $departure->format('d/m/Y');
-            //Sending number of nights to insert in DB
+            //Sending number of nights to insert later in DB
                 return $this->twig->render('User/summary.html.twig', ['post' => $_POST, 'errors' => $errors, 'nightsNumber' => $nightsNumber]);
             }
         }
