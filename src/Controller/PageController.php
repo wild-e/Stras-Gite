@@ -42,7 +42,7 @@ class PageController extends AbstractController
 
     public function booking()
     {
-        // setting minDate and maxDate for input date 
+        // setting minDate and maxDate for input date
         $minDate = \App\Model\BookingManager::setDate('+ 1 day');
         $maxDate = \App\Model\BookingManager::setDate('+ 1 year');
         return $this->twig->render('Page/booking.html.twig', ['minDate' => $minDate, 'maxDate' => $maxDate]);

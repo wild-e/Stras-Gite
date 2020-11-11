@@ -31,6 +31,7 @@ Réserver chez Stras'Gîte | {{ parent() }}
         <br>
         <div class="row">
             <div class="col-sm-5">
+                <input type="text" name="nightsNumber" value="{{ post.nightsNumber }}" readonly style="border: 0px">
                 <p class="item-name">{{ nightsNumber }} nuits</p>
             </div>
             <div class="col-sm-5">
@@ -114,7 +115,6 @@ Réserver chez Stras'Gîte | {{ parent() }}
         <input name="roomSelect" value="{{ post.roomSelect }}" type="text" style="visibility:hidden">
         <input name="arrival" value="{{ post.arrival }}" type="text" style="visibility:hidden">
         <input name="departure" value="{{ post.departure }}" type="text" style="visibility:hidden">
-                <input name="departure" value="{{ post.nightsNumber }}" type="text" style="visibility:hidden">
         <div class="form-group">
             <button class="btn btn-light active btn-block" type="submit" name="checkout">Confirmer ma réservation</button>
         </div>
