@@ -49,6 +49,7 @@ class PageController extends AbstractController
     public function suite()
     {
         return $this->twig->render('Page/suite.html.twig');
+    }
 
     public function contact()
     {
