@@ -30,7 +30,6 @@ Réserver chez Stras'Gîte | {{ parent() }}
                 value="{{ post.departure }}" min="{{ minDate }}" max="{{ maxDate }}">
         </div>
         <div class="form-group">
-        {# fourrer une condition: si le client vient d'une chambre le choix est déjà fait  #}
             <label for="room">Choix de la chambre</label>
             <select class="form-control" name="roomSelect" id="room">
                 <option value="{{ post.roomSelect }}">{{ post.roomSelect }}</option>
@@ -53,8 +52,8 @@ Réserver chez Stras'Gîte | {{ parent() }}
         <div class="form-group">
             <label for="childGuest">Nombre d'enfants</label>
             <select class="form-control" name="childGuestSelect" id="childGuest">
-                <option value="{{ post.childGuestSelect }}">{{ post.childGuestSelect }}</option>
-                <option value="none">0</option>
+                <option value="{{ post.childGuestSelect }}">{{ post.childGuestSelect }} enfant(s)</option>
+                <option value="aucun">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>

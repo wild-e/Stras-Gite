@@ -27,9 +27,7 @@ class UserController extends AbstractController
         // Checking time difference between arrival and departure
         $arrival = new \DateTime($_POST['arrival']);
         $departure = new \DateTime($_POST['departure']);
-        $timeDiff = $arrival->diff($departure)->format('%d');
-        // Sending number of nights
-        $_POST['nightsNumber'] = $timeDiff;
+        $nightsNumber = $arrival->diff($departure)->format('%d');
 
         // Variable to display errors 
         $errors= ""; 
@@ -44,7 +42,7 @@ class UserController extends AbstractController
                 $errors = "Veuillez entrer une date de départ !";
                 return $this->twig->render('Page/booking.html.twig', ['post' => $_POST, 'minDate' => $minDate, 'maxDate' => $maxDate, 'errors' => $errors]);
             
-            }elseif ($timeDiff < 3) {
+            }elseif ($nightsNumber < 3) {
                 $errors = "Réservation minimum de 3 nuits !";
                 return $this->twig->render('Page/booking.html.twig', ['post' => $_POST, 'minDate' => $minDate, 'maxDate' => $maxDate, 'errors' => $errors]);
 
@@ -68,8 +66,8 @@ class UserController extends AbstractController
             //Reversing date format to please french people UX/UI
             $_POST['arrival'] = $arrival->format('d/m/Y');
             $_POST['departure'] = $departure->format('d/m/Y');
-
-            return $this->twig->render('User/summary.html.twig', ['post' => $_POST, 'errors' => $errors]);
+            //Sending number of nights to insert in DB
+            return $this->twig->render('User/summary.html.twig', ['post' => $_POST, 'errors' => $errors, 'nightsNumber' => $nightsNumber]);
             }
         }
     }
