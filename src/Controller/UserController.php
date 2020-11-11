@@ -20,11 +20,7 @@ class UserController extends AbstractController
 
     public function summary()
     {
-        // setting again minDate and maxDate for input date (in case of errors)
-        // $minDate = new \DateTime();
-        // $maxDate = clone $minDate;
-        // $minDate = $minDate->modify('+ 1 day')->format('Y-m-d');
-        // $maxDate = $maxDate->modify('+ 1 year')->format('Y-m-d');
+        // Setting again minDate and maxDate for input date (in case of errors)
         $minDate = \App\Model\BookingManager::setDate('+ 1 day');
         $maxDate = \App\Model\BookingManager::setDate('+ 1 year');
 
@@ -69,9 +65,10 @@ class UserController extends AbstractController
                 return $this->twig->render('Page/booking.html.twig', ['post' => $_POST, 'minDate' => $minDate, 'maxDate' => $maxDate, 'errors' => $errors]);
 
             } else {
-            //reverse date format to please french people UX/UI
-            $_POST['arrival'] = \App\Model\BookingManager::reverseDate($_POST['arrival']);
-            $_POST['departure'] = \App\Model\BookingManager::reverseDate($_POST['departure']);
+            //Reversing date format to please french people UX/UI
+            $_POST['arrival'] = $arrival->format('d/m/Y');
+            $_POST['departure'] = $departure->format('d/m/Y');
+
             return $this->twig->render('User/summary.html.twig', ['post' => $_POST, 'errors' => $errors]);
             }
         }
