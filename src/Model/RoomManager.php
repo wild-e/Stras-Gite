@@ -4,7 +4,7 @@ namespace App\Model;
 
 class RoomManager extends AbstractManager
 {
-    const TABLE = 'room';
+    public const TABLE = 'room';
 
     public function __construct()
     {
@@ -32,8 +32,8 @@ class RoomManager extends AbstractManager
 
     public function update(array $room)
     {
-
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `room`= :room , `description`= :description WHERE id=:id");
+        $query = "UPDATE " . self::TABLE . " SET `room`= :room , `description`= :description WHERE id=:id";
+        $statement = $this->pdo->prepare($query);
         $statement->bindValue('id', $room['id'], \PDO::PARAM_INT);
         $statement->bindValue('room', $room['room'], \PDO::PARAM_INT);
         $statement->bindValue('description', $room['description'], \PDO::PARAM_STR);
