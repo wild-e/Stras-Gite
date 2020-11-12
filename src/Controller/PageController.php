@@ -54,7 +54,6 @@ class PageController extends AbstractController
     public function contact()
     {
         return $this->twig->render('Page/contact.html.twig');
-
     }
 
     public function booking()

@@ -1,12 +1,5 @@
 {% extends 'layout.html.twig' %}
 
-
-{% block stylesheet %}
-
-    {{ parent() }}
-
-    <link rel="stylesheet" href="../assets/css/style-chambre.css"> {
-
 {% block title %}
 Nos chambres - {{ parent() }}
 {% endblock %}
@@ -17,8 +10,6 @@ Nos chambres - {{ parent() }}
 {% endblock %}
 
 {% block content %}
-
-    <p style="margin: 102px;"></p>
         <div class="container text-right">
             <div class="intro">
                 <h1 class="text-center">Suite de luxe</h1>
@@ -26,12 +17,6 @@ Nos chambres - {{ parent() }}
             </div>
                     <div class="row">
                         <div class="col-md-10 col-lg-7 col-xl-7 offset-md-1 offset-lg-0 offset-xl-1"><a class="text-left" href="#"><img class="img-fluid chambre" src="/assets/images/luxe.jpg"></a>
-
-
-                        <div class="col-md-10 col-lg-7 col-xl-7 offset-md-1 offset-lg-0 offset-xl-1">
-                            <a class="text-left" href="#">
-                                <img class="img-fluid chambre" src="/assets/images/chambres/lit-king-size.jpg">
-                            </a>
                             <h6 class="text name"><br>Chambre à coucher moderne</h6>
                                 <p class="text description">Cette suite de luxe est la chambre idéale pour se reposer et passer un agréable moment à Strasbourg.
                                 Elle comprend : <br>
@@ -58,18 +43,6 @@ Nos chambres - {{ parent() }}
                                         <li>Meuble Hudson Reed</li>
                                         <li>Pièce marbrée</li>
                                     </ul>
-                        <div class="col-md-12 col-lg-7 offset-md-1 offset-lg-0 offset-xl-4">
-                            <a href="#"><img class="img-fluid sdb"  src="/assets/images/chambres/salle-de-bain-luxe.jpg"></a>
-                            <h6 class="text name"><br>Salle de bain</h6>
-                            <p class="text description">Une salle de bain ultra moderne équipée de matériels très haut de gamme.<br> Elle comprend : </p>
-                            <ul class="sdbb">
-                                <li>Mitigeur d'exception Elizabeth</li>
-                                <li>Baignoire Villeroy & Boch</li>
-                                <li>Miroir lumineux</li>
-                                <li>Meuble Hudson Reed</li>
-                                <li>Pièce marbrée</li>
-                            </ul>
-                            </div>
                         </div>
                 <br>
                     <h5 class="text-center"><br><br><br><br><br>Services</h5>
