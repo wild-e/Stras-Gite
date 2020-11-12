@@ -1,0 +1,125 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+Réserver chez Stras'Gîte | {{ parent() }}
+{% endblock %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="../assets/css/Login-Form-Clean.css">
+{% endblock %}
+
+{% block content %}
+<div class="login-clean">
+    <form method="post" action="../User/checkout">
+    {# Summary of last page  #}
+        <h1 class="text-center">Résumé</h1>
+        <br>
+        <p class="text-center">Réservation du {{ post.arrival }} au {{ post.departure }}</p>
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <p class="item-name">Check-in</p>
+                <p class="item-description">15:00</p>
+            </div>
+            <div class="col-sm-6 text-center">
+                <p class="item-name">Check-out</p>
+                <p class="item-description">11:00</p>
+            </div>
+        </div>
+        <hr align="center" width="200">
+        <h3>Chambre {{ post.roomSelect }}</h3>
+        <br>
+        <div class="row">
+            <div class="col-sm-5">
+                <input type="text" name="nightsNumber" value="{{ post.nightsNumber }}" readonly style="border: 0px">
+                <p class="item-name">{{ nightsNumber }} nuits</p>
+            </div>
+            <div class="col-sm-5">
+                <select name="guestSelect" >
+                    <option value="{{ post.guestSelect }}">{{ post.guestSelect }} adultes</option>
+                    <option value="1">1 adulte</option>
+                    <option value="2">2 adultes</option>
+                    <option value="3">3 adultes</option>
+                    <option value="4">4 adultes</option>
+                </select>
+                <select name="childGuestSelect">
+                    <option value="{{ post.childGuestSelect }}">{{ post.childGuestSelect }} enfant(s)</option>
+                    <option value="aucun">0 enfant</option>
+                    <option value="1">1 enfant</option>
+                    <option value="2">2 enfants</option>
+                    <option value="3">3 enfants</option>
+                    <option value="4">4 enfants</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <span class="price">$200</span>
+            </div>
+        </div>
+        <br>
+        <h6>Envie d'un extra ?</h6>
+        <div class="row">
+            <div class="col-sm-8">
+                <p class="text">Room Service 24/24h</p>
+            </div>
+            <div class="col-sm-2">
+                <select name="serviceSelect">
+                    <option value="1">1</option>
+                    <option value="0">0</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <span class="price">$50</span>
+            </div>
+        </div>
+        <hr align="center" width="200">
+        <br>
+        <div class="row">
+            <div class="col-sm-10">
+                <p class="total" >Total</p>
+            </div>
+            <div class="col-sm-2">
+                <span class="price">$1000</span>
+            </div>
+        </div>
+        <hr align="center" width="200">
+
+        {# Registration form  #}
+        <br>
+        <h3 class="text-center">Je m'enregistre</h3>
+        <small style="visibility:hidden" class="form-text text-muted">Help text for a form field.</small>
+        <div class="form-group">
+            <label for="lastname">Nom</label>
+            <input type="text" class="form-control" name="lastname" required/>
+        </div>
+        <div class="form-group">
+            <label for="firstname">Prénom</label>
+            <input class="form-control" type="text" name="firstname" required/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" type="email" name="email" maxlength="250" required/>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Télèphone</label>
+            <input class="form-control" type="text" name="phoneNumber" maxlength="10" required/>
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input class="form-control" type="password" name="password" minlength="10" maxlength="100" required/>
+        </div>
+            <div class="form-group">
+            <label for="passwordCheck">Confirmer le mot de passe</label>
+            <input class="form-control" type="password" name="passwordCheck" minlength="10" maxlength="100" required/>
+        </div>
+        {# // Send previous form Post variable #}
+        <input name="roomSelect" value="{{ post.roomSelect }}" type="text" style="visibility:hidden">
+        <input name="arrival" value="{{ post.arrival }}" type="text" style="visibility:hidden">
+        <input name="departure" value="{{ post.departure }}" type="text" style="visibility:hidden">
+        <div class="form-group">
+            <button class="btn btn-light active btn-block" type="submit" name="checkout">Confirmer ma réservation</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
