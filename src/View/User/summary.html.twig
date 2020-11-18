@@ -58,17 +58,15 @@ Réserver chez Stras'Gîte | {{ parent() }}
         <br>
         <h6>Envie d'un extra ?</h6>
         <div class="row">
-            <div class="col-sm-8">
-                <p class="text">Room Service 24/24h</p>
+            <div class="col-sm-6">
+                <p class="text" id="roomService">Room Service 24/24h</p>
+            </div>
+            <div class="col-sm-4">
+            {# Removing room service JS #}
+                <button class="btn btn-primary" onclick="removeRoomService()">Non merci!</button>
             </div>
             <div class="col-sm-2">
-                <select name="serviceSelect">
-                    <option value="1">1</option>
-                    <option value="0">0</option>
-                </select>
-            </div>
-            <div class="col-sm-2">
-                <span class="price">$50</span>
+                <input name="roomServiceChoice" id="roomServiceChoice" value="50" style="text-align: right; border: none; width: 50%;" readonly><span>€</span>
             </div>
         </div>
         <hr align="center" width="200">
@@ -122,4 +120,16 @@ Réserver chez Stras'Gîte | {{ parent() }}
 </div>
 
 {% endblock %}
+
+{% block javascript %}
+<script>
+function removeRoomService() {
+    document.getElementById("roomService").style.textDecoration = "line-through";
+    document.getElementById("roomServiceChoice").value = "0";
+
+}
+</script>
+{% endblock %}
+
+
 
