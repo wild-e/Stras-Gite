@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Model;
+namespace App\Service;
 
-class BookingManager
+class TimeSetter
 {
 
     public static function setDate(string $modifier)
