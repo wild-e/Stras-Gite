@@ -21,7 +21,7 @@ class UserController extends AbstractController
     public function summary()
     {
         // Setting again minDate and maxDate for input date (in case of errors)
-        $minDate = \App\Model\BookingManager::setDate('+ 1 day');
+        $minDate = \App\Model\BookingManager::setDate('+ 3 days');
         $maxDate = \App\Model\BookingManager::setDate('+ 1 year');
 
         // Checking time difference between arrival and departure
