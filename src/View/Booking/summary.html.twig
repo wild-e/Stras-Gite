@@ -11,7 +11,7 @@ Réserver chez Stras'Gîte | {{ parent() }}
 
 {% block content %}
 <div class="login-clean">
-    <form method="post" action="../Booking/checkout">
+    <form method="post" action="../Booking/register">
     {# Summary of last page  #}
         <h1 class="text-center">Résumé</h1>
         <br>
@@ -31,8 +31,9 @@ Réserver chez Stras'Gîte | {{ parent() }}
         <br>
         <div class="row">
             <div class="col-sm-5">
-                <input type="text" name="nightsNumber" value="{{ post.nightsNumber }}" readonly style="border: 0px">
+            {# showing and sending Number of nights to DB#}
                 <p class="item-name">{{ nightsNumber }} nuits</p>
+                <input type="text" name="nightsNumber" value="{{ nightsNumber }}" style="visibility:hidden">
             </div>
             <div class="col-sm-5">
                 <select name="guestSelect" >
@@ -66,6 +67,8 @@ Réserver chez Stras'Gîte | {{ parent() }}
                 <button class="btn btn-primary" onclick="removeRoomService()">Non merci!</button>
             </div>
             <div class="col-sm-2">
+            {# Setting roomService variable  #}
+            {% set roomServicePric = 50 %}
                 <input name="roomServiceChoice" id="roomServiceChoice" value="50" style="text-align: right; border: none; width: 50%;" readonly><span>€</span>
             </div>
         </div>
@@ -84,30 +87,30 @@ Réserver chez Stras'Gîte | {{ parent() }}
         {# Registration form  #}
         <br>
         <h3 class="text-center">Je m'enregistre</h3>
-        <small style="visibility:hidden" class="form-text text-muted">Help text for a form field.</small>
+            <small class="text-danger font-weight-bold">{{ error }}</small>
         <div class="form-group">
             <label for="lastname">Nom</label>
-            <input type="text" class="form-control" name="lastname" required/>
+            <input type="text" class="form-control" name="lastname" value="{{ post.lastname }}" required/>
         </div>
         <div class="form-group">
             <label for="firstname">Prénom</label>
-            <input class="form-control" type="text" name="firstname" required/>
+            <input class="form-control" type="text" name="firstname" value="{{ post.firstname }}" required/>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input class="form-control" type="email" name="email" maxlength="250" required/>
+            <input class="form-control" type="email" name="email" value="{{ post.email }}" maxlength="250" required/>
         </div>
         <div class="form-group">
             <label for="phoneNumber">Télèphone</label>
-            <input class="form-control" type="text" name="phoneNumber" maxlength="10" required/>
+            <input class="form-control" type="text" name="phoneNumber" value="{{ post.phoneNumber }}" maxlength="10" required/>
         </div>
         <div class="form-group">
             <label for="password">Mot de passe</label>
-            <input class="form-control" type="password" name="password" minlength="10" maxlength="100" required/>
+            <input class="form-control" type="password" name="password" minlength="8" maxlength="20" required/>
         </div>
             <div class="form-group">
             <label for="passwordCheck">Confirmer le mot de passe</label>
-            <input class="form-control" type="password" name="passwordCheck" minlength="10" maxlength="100" required/>
+            <input class="form-control" type="password" name="passwordCheck" minlength="8" maxlength="20" required/>
         </div>
         {# // Send previous form Post variable #}
         <input name="roomSelect" value="{{ post.roomSelect }}" type="text" style="visibility:hidden">
