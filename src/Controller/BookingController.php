@@ -87,25 +87,17 @@ class BookingController extends AbstractController
             // Variable to display error
             $error = "";
 
-            if (empty($_POST["lastname"])) 
-            {
+            if (empty($_POST["lastname"])) {
                 $error = "Merci de donner votre nom";
-                return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
-            } elseif (!preg_match("/[a-zA-Z]{2,40}$/", "", $_POST['lastname'])) {
-                $error = "Merci d'inscrire votre vrai nom";
                 return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
 
             } elseif (empty($_POST["firstname"])) {
                 $error = "Merci de donner votre prénom";
                 return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
-            } elseif (!preg_match("/[a-zA-Z]{2,40}$/", "", $_POST['firstname'])) {
-                $error = "Merci d'inscrire votre vrai prénom";
-                return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
 
-            } elseif (!preg_match("/[0-9]{10}$/", "", $_POST['phoneNumber'])) {
-                $error = "Veuillez donner votre numéro de télèphone";
+            } elseif (!preg_match("^[0-9]$/", $_POST['phoneNumber'])) {
+                $error = "Veuillez donner votre numéro de télèphone. Celui-ci doit être sans espaces";
                 return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
-
 
             } elseif (empty($_POST["email"])) {
                 $error = "Veuillez donner votre email";
@@ -136,6 +128,9 @@ class BookingController extends AbstractController
                     'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
                 ];
                 $registration = $userManager->register($userInfo);
+
+                $_POST['firstname'] = trim(ucfirst($_POST['firstname']));
+                $_POST['lastname'] = trim(ucfirst($_POST['lastname']));
 
             return $this->twig->render('Booking/checkout.html.twig', ['post' => $_POST]);
             }
