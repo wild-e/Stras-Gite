@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Model\UserManager;
+use App\Model\BookingManager;
 
 
 class BookingController extends AbstractController
@@ -13,6 +14,7 @@ class BookingController extends AbstractController
         $minDate = \App\Service\TimeSetter::setDate('+ 3 days');
         $maxDate = \App\Service\TimeSetter::setDate('+ 1 year');
 
+        // Checking for, and displaying error after POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Variable to display error
             $error = "";
@@ -22,7 +24,6 @@ class BookingController extends AbstractController
             $departure = new \DateTime($_POST['departure']);
             $nightsNumber = $arrival->diff($departure)->format('%d');
 
-            // Checking for, and displaying error
             if (empty($_POST['arrival'])) {
                 $error = "Veuillez entrer une date d'arrivée !";
                 return $this->twig->render(
@@ -117,7 +118,7 @@ class BookingController extends AbstractController
                  return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
 
             } else {
-
+                // Inserting clients Info in DB
                 $userManager = new UserManager();
                 $userInfo =
                 [
@@ -129,6 +130,23 @@ class BookingController extends AbstractController
                 ];
                 $registration = $userManager->register($userInfo);
 
+                // Check if User info were inserted, then insert booking info in DB 
+                if($registration){
+                    $bookingManager = new BookingManager();
+                    $bookingInfo =
+                    [
+                        'arrival' => $_POST['arrival'],
+                        'departure' => $_POST['departure'],
+                        'roomSelect' => $_POST['roomSelect'],
+                        'guestSelect' => $_POST['guestSelect'],
+                        'childGuestSelect' => $_POST['childGuestSelect'],
+                        'nightsNumber' => $_POST['nightsNumber'],
+                        'roomServiceChoice' => $_POST['roomServiceChoice']
+                    ];
+                    $booking = $bookingManager->book($bookingInfo);
+                }
+
+                // Triming name for a nice display 
                 $_POST['firstname'] = trim(ucfirst($_POST['firstname']));
                 $_POST['lastname'] = trim(ucfirst($_POST['lastname']));
 
