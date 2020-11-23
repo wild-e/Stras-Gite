@@ -68,15 +68,19 @@ class BookingController extends AbstractController
                 );
             } else {
             //Reversing date format to please french people UX/UI
-                $displayArrival = $arrival->format('d-m-Y');
-                $displayDeparture = $departure->format('d-m-Y');
+            $displayArrival = $arrival->format('d-m-Y');
+            $displayDeparture = $departure->format('d-m-Y');
+            //Retrieving price per night for the selected room
+            $room = new BookingManager();
+            $room = $room->selectPrice($_POST['roomSelect']);
             //Sending number of nights to insert later in DB
                 return $this->twig->render('Booking/summary.html.twig', [
                     'post' => $_POST, 
                     'error' => $error, 
                     'nightsNumber' => $nightsNumber, 
                     'displayArrival' => $displayArrival, 
-                    'displayDeparture' => $displayDeparture
+                    'displayDeparture' => $displayDeparture,
+                    'room' => $room
                     ]);
             }
         }
@@ -168,11 +172,9 @@ class BookingController extends AbstractController
                         'roomServiceChoice' => $_POST['roomServiceChoice']
                     ];
                     $booking = $bookingManager->book($bookingInfo);
-                    return $this->twig->render('Booking/checkout.html.twig', ['post' => $_POST, 'booking' => $booking]);
 
+                    return $this->twig->render('Booking/checkout.html.twig', ['post' => $_POST]);
                 }
-
-            return $this->twig->render('Booking/checkout.html.twig', ['post' => $_POST]);
             }
         }
     }

@@ -42,4 +42,13 @@ class BookingManager extends AbstractManager
         $statement->bindValue(':room_service', $booking['roomServiceChoice'], \PDO::PARAM_BOOL);
         $statement->execute();
     }
+
+    public function selectPrice(string $room)
+    {
+        $query = "SELECT price_per_night FROM room WHERE room_name = (:room)";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':room', $room, \PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetch();
+    }
 }
