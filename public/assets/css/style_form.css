@@ -52,3 +52,14 @@ label {
     color: white;
     font-size: 20px;
 }
+
+.erreur {
+    text-align: center;
+    color: red;
+    font-size: 18px;
+}
+
+.erreur:hover {
+    font-weight: bold;
+    font-size: 22px;
+}
