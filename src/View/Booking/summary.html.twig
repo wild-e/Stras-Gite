@@ -15,7 +15,7 @@ Réserver chez Stras'Gîte | {{ parent() }}
     {# Summary of last page  #}
         <h1 class="text-center">Résumé</h1>
         <br>
-        <p class="text-center">Réservation du {{ post.arrival }} au {{ post.departure }}</p>
+        <p class="text-center">Réservation du {{ displayArrival }} au {{ displayDeparture }}</p>
         <div class="row">
             <div class="col-sm-6 text-center">
                 <p class="item-name">Check-in</p>
@@ -53,6 +53,7 @@ Réserver chez Stras'Gîte | {{ parent() }}
                 </select>
             </div>
             <div class="col-sm-2">
+                {# Room price  #}
                 <span class="price">$200</span>
             </div>
         </div>
@@ -67,19 +68,19 @@ Réserver chez Stras'Gîte | {{ parent() }}
                 <button class="btn btn-primary" onclick="removeRoomService()">Non merci!</button>
             </div>
             <div class="col-sm-2">
-            {# Setting roomService variable  #}
-            {% set roomServicePric = 50 %}
+            {# Setting roomService #}
                 <input name="roomServiceChoice" id="roomServiceChoice" value="50" style="text-align: right; border: none; width: 50%;" readonly><span>€</span>
             </div>
         </div>
         <hr align="center" width="200">
         <br>
         <div class="row">
-            <div class="col-sm-10">
+            <div class="col-sm-8">
                 <p class="total" >Total</p>
             </div>
-            <div class="col-sm-2">
-                <span class="price">$1000</span>
+            <div class="col-sm-4">
+            {# Setting price to pay  #}
+                <input name="paidPrice" value="1000" style="text-align: right; border: none; width: 90%;" readonly><span>€</span>
             </div>
         </div>
         <hr align="center" width="200">

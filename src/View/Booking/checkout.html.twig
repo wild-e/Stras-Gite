@@ -14,14 +14,13 @@ Confirmation de réservation | {{ parent() }}
 <div class="login-clean">
     <form>
         <div class="intro">
-        <h1 class="text-center">Confirmation</h1>
+        <h1 class="text-center">Confirmation {{booking.id}}</h1>
         </div>
         <p class="text-center">
         Merci {{ post.firstname }} {{ post.lastname }}.
         </p>
         <p class="text-center">
-        Votre réservation a bien été prise en compte pour la chambre {{ post.roomSelect }} 
-        du {{ post.arrival }} au {{ post.departure }} pour {{ post.guestSelect }} adulte(s) et {{ post.childGuestSelect }} enfant(s).
+        Votre réservation a bien été prise en compte pour la chambre {{ post.roomSelect }}.
         </p>
         <p class="text-center">
         Une confirmation vous a été envoyée à l'adresse mail suivante : {{ post.email }} .

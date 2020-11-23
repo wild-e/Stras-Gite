@@ -68,13 +68,16 @@ class BookingController extends AbstractController
                 );
             } else {
             //Reversing date format to please french people UX/UI
-                $_POST['arrival'] = $arrival->format('d-m-Y');
-                $_POST['departure'] = $departure->format('d-m-Y');
+                $displayArrival = $arrival->format('d-m-Y');
+                $displayDeparture = $departure->format('d-m-Y');
             //Sending number of nights to insert later in DB
-                return $this->twig->render(
-                    'Booking/summary.html.twig',
-                    ['post' => $_POST, 'error' => $error, 'nightsNumber' => $nightsNumber]
-                );
+                return $this->twig->render('Booking/summary.html.twig', [
+                    'post' => $_POST, 
+                    'error' => $error, 
+                    'nightsNumber' => $nightsNumber, 
+                    'displayArrival' => $displayArrival, 
+                    'displayDeparture' => $displayDeparture
+                    ]);
             }
         }
 
@@ -96,7 +99,7 @@ class BookingController extends AbstractController
                 $error = "Merci de donner votre prénom";
                 return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
 
-            } elseif (!preg_match("^[0-9]$/", $_POST['phoneNumber'])) {
+            } elseif (!is_numeric($_POST['phoneNumber'])) {
                 $error = "Veuillez donner votre numéro de télèphone. Celui-ci doit être sans espaces";
                 return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
 
@@ -118,37 +121,55 @@ class BookingController extends AbstractController
                  return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
 
             } else {
+                // Triming name for a nice display 
+                $_POST['firstname'] = trim(ucfirst($_POST['firstname']));
+                $_POST['lastname'] = trim(ucfirst($_POST['lastname']));
+
                 // Inserting clients Info in DB
                 $userManager = new UserManager();
                 $userInfo =
                 [
-                    'firstname' => trim(ucfirst($_POST['firstname'])),
-                    'lastname' => trim(ucfirst($_POST['lastname'])),
+                    'firstname' => $_POST['firstname'],
+                    'lastname' => $_POST['lastname'],
                     'email' => trim($_POST['email']),
-                    'phoneNumber' => trim($_POST['phoneNumber']),
+                    'phoneNumber' => $_POST['phoneNumber'],
                     'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
                 ];
                 $registration = $userManager->register($userInfo);
 
                 // Check if User info were inserted, then insert booking info in DB 
                 if($registration){
+
+                    // Transforming room service choice into bool for inserting in DB
+                    if ($_POST['roomServiceChoice'] === 50){
+                        $_POST['roomServiceChoice'] === 1;
+                    }else{
+                        $_POST['roomServiceChoice'] === 0;
+                    }
+
+                    // Transforming child select choice into 0 for inserting in DB
+                    if ($_POST['childGuestSelect'] == 'aucun'){
+                        $_POST['childGuestSelect'] === 0;
+                    }
+
                     $bookingManager = new BookingManager();
                     $bookingInfo =
                     [
+                        'firstname' => $_POST['firstname'],
+                        'lastname' => $_POST['lastname'],
                         'arrival' => $_POST['arrival'],
                         'departure' => $_POST['departure'],
                         'roomSelect' => $_POST['roomSelect'],
                         'guestSelect' => $_POST['guestSelect'],
                         'childGuestSelect' => $_POST['childGuestSelect'],
                         'nightsNumber' => $_POST['nightsNumber'],
+                        'paidPrice' => $_POST['paidPrice'],
                         'roomServiceChoice' => $_POST['roomServiceChoice']
                     ];
                     $booking = $bookingManager->book($bookingInfo);
-                }
+                    return $this->twig->render('Booking/checkout.html.twig', ['post' => $_POST, 'booking' => $booking]);
 
-                // Triming name for a nice display 
-                $_POST['firstname'] = trim(ucfirst($_POST['firstname']));
-                $_POST['lastname'] = trim(ucfirst($_POST['lastname']));
+                }
 
             return $this->twig->render('Booking/checkout.html.twig', ['post' => $_POST]);
             }
