@@ -18,7 +18,7 @@ class LoginController extends AbstractController
                 ];
             $login = $userManager->login($user);
 
-            if (is_array($login)) {
+            if (password_verify($_POST['password'], $login['password'])) {
                 $_SESSION['email'] = $login['email'];
                 $_SESSION['password'] = $login['password'];
                 $_SESSION['firstname'] = $login['firstname'];

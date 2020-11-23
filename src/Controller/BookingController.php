@@ -126,6 +126,7 @@ class BookingController extends AbstractController
                 $_POST['lastname'] = trim(ucfirst($_POST['lastname']));
 
                 // Inserting clients Info in DB
+                // Hashing password
                 $userManager = new UserManager();
                 $userInfo =
                 [
