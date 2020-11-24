@@ -2,7 +2,7 @@
 
 ## Description
 
-Please find the DB below and use these email and passswords :
+Please find the DB in root folder and use these emails and passswords for login test purpose :
 
 #### ADMIN
 yavuz.kutuk@wildcodeschool.com
