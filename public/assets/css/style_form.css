@@ -1,3 +1,7 @@
+body {
+    margin-top: 102px;
+}
+
 h1 {
     text-align: center;
 }
@@ -14,7 +18,7 @@ h1 {
     transition: background-color 0.25s;
 }
 
-form .submit:hover, form .submit:focus {
+.submit:hover, .submit:focus {
     background: #66d7d7;
 }
 

@@ -11,7 +11,7 @@ class ContactController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $verifyService = new VerifyService();
-            $input = $verifyService->check($_POST);
+            $input = $verifyService->check();
             return $this->twig->render('Page/contact.html.twig', ['post' => $_POST, 'error' => $input]);
         } else {
             $contactManager = new ContactManager();

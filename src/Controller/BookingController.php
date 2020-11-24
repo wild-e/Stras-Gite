@@ -2,26 +2,29 @@
 
 namespace App\Controller;
 
+use App\Service\TimeSetter;
+use DateTime;
+
 class BookingController extends AbstractController
 {
 
     public function booking()
     {
         // setting minDate and maxDate for input date
-        $minDate = \App\Service\TimeSetter::setDate('+ 3 days');
-        $maxDate = \App\Service\TimeSetter::setDate('+ 1 year');
+        $minDate = TimeSetter::setDate('+ 3 days');
+        $maxDate = TimeSetter::setDate('+ 1 year');
         return $this->twig->render('Booking/booking.html.twig', ['minDate' => $minDate, 'maxDate' => $maxDate]);
     }
 
     public function summary()
     {
         // Setting again minDate and maxDate for input date (in case of errors)
-        $minDate = \App\Service\TimeSetter::setDate('+ 3 days');
-        $maxDate = \App\Service\TimeSetter::setDate('+ 1 year');
+        $minDate = TimeSetter::setDate('+ 3 days');
+        $maxDate = TimeSetter::setDate('+ 1 year');
 
         // Checking time difference between arrival and departure
-        $arrival = new \DateTime($_POST['arrival']);
-        $departure = new \DateTime($_POST['departure']);
+        $arrival = new DateTime($_POST['arrival']);
+        $departure = new DateTime($_POST['departure']);
         $nightsNumber = $arrival->diff($departure)->format('%d');
 
         // Variable to display errors
