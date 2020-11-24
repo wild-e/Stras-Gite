@@ -23,7 +23,7 @@ class BookingManager extends AbstractManager
         $clientID = $statement->fetch();
 
         // Retrieving room ID
-        $roomID = "SELECT id FROM room WHERE room_name = (:roomSelect)";
+        $roomID = "SELECT id FROM room WHERE room = (:roomSelect)";
         $statement = $this->pdo->prepare($roomID);
         $statement->bindValue(':roomSelect', $booking['roomSelect'], \PDO::PARAM_STR);
         $statement->execute();
