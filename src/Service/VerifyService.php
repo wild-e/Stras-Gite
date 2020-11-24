@@ -2,6 +2,8 @@
 
 namespace App\Service;
 
+use DateTime;
+
 class VerifyService
 {
     public function messageCheck()
@@ -29,6 +31,10 @@ class VerifyService
 
     public function bookingCheck()
     {
+        // Checking time difference between arrival and departure
+        $arrival = new DateTime($_POST['arrival']);
+        $departure = new DateTime($_POST['departure']);
+        $nightsNumber = $arrival->diff($departure)->format('%d');
         // Variable to display error
         $error = "";
         if (empty($_POST['arrival'])) {
