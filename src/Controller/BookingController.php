@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Controller;
+
 use App\Model\UserManager;
 use App\Model\BookingManager;
-
 
 class BookingController extends AbstractController
 {
@@ -68,17 +68,17 @@ class BookingController extends AbstractController
                 );
             } else {
             //Reversing date format to please french people UX/UI
-            $displayArrival = $arrival->format('d-m-Y');
-            $displayDeparture = $departure->format('d-m-Y');
+                $displayArrival = $arrival->format('d-m-Y');
+                $displayDeparture = $departure->format('d-m-Y');
             //Retrieving price per night for the selected room
-            $room = new BookingManager();
-            $room = $room->selectPrice($_POST['roomSelect']);
+                $room = new BookingManager();
+                $room = $room->selectPrice($_POST['roomSelect']);
             //Sending number of nights to insert later in DB
                 return $this->twig->render('Booking/summary.html.twig', [
-                    'post' => $_POST, 
-                    'error' => $error, 
-                    'nightsNumber' => $nightsNumber, 
-                    'displayArrival' => $displayArrival, 
+                    'post' => $_POST,
+                    'error' => $error,
+                    'nightsNumber' => $nightsNumber,
+                    'displayArrival' => $displayArrival,
                     'displayDeparture' => $displayDeparture,
                     'room' => $room
                     ]);
@@ -86,8 +86,8 @@ class BookingController extends AbstractController
         }
 
     // For first show of the booking Page
-    return $this->twig->render('Booking/booking.html.twig', ['minDate' => $minDate, 'maxDate' => $maxDate]);
-}
+        return $this->twig->render('Booking/booking.html.twig', ['minDate' => $minDate, 'maxDate' => $maxDate]);
+    }
 
     public function register()
     {
@@ -98,34 +98,36 @@ class BookingController extends AbstractController
             if (empty($_POST["lastname"])) {
                 $error = "Merci de donner votre nom";
                 return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
-
             } elseif (empty($_POST["firstname"])) {
                 $error = "Merci de donner votre prénom";
                 return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
-
             } elseif (!is_numeric($_POST['phoneNumber'])) {
                 $error = "Veuillez donner votre numéro de télèphone. Celui-ci doit être sans espaces";
                 return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
-
             } elseif (empty($_POST["email"])) {
                 $error = "Veuillez donner votre email";
                 return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
             } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                 $error = "Format d'email invalide";
                 return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
-
-            } elseif (empty($_POST['password']) || empty($_POST['passwordCheck']) ||
-             $_POST['password'] <> $_POST['passwordCheck']){
+            } elseif (
+                empty($_POST['password']) || empty($_POST['passwordCheck']) ||
+                $_POST['password'] <> $_POST['passwordCheck']
+            ) {
                 $error = "Veuillez donner un mot de passe et le répeter";
                 return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
-            } elseif (!preg_match('/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,20}$/',
-             $_POST['password'])){
-                $error = "Le mot de passe doit posséder au moins 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial (@#-_$%^&+=§!?).
+            } elseif (
+                !preg_match(
+                    '/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,20}$/',
+                    $_POST['password']
+                )
+            ) {
+                $error = "Le mot de passe doit posséder au moins 1 majuscule, 1 minuscule,
+                 1 chiffre et 1 caractère spécial (@#-_$%^&+=§!?).
                  Sa longueur doit être comprise entre 8 et 20.";
                  return $this->twig->render('Booking/summary.html.twig', ['post' => $_POST, 'error' => $error]);
-
             } else {
-                // Triming name for a nice display 
+                // Triming name for a nice display
                 $_POST['firstname'] = trim(ucfirst($_POST['firstname']));
                 $_POST['lastname'] = trim(ucfirst($_POST['lastname']));
 
@@ -142,18 +144,17 @@ class BookingController extends AbstractController
                 ];
                 $registration = $userManager->register($userInfo);
 
-                // Check if User info were inserted, then insert booking info in DB 
-                if($registration){
-
+                // Check if User info were inserted, then insert booking info in DB
+                if ($registration) {
                     // Transforming room service choice into bool for inserting in DB
-                    if ($_POST['roomServiceChoice'] === 50){
+                    if ($_POST['roomServiceChoice'] === 50) {
                         $_POST['roomServiceChoice'] === 1;
-                    }else{
+                    } else {
                         $_POST['roomServiceChoice'] === 0;
                     }
 
                     // Transforming child select choice into 0 for inserting in DB
-                    if ($_POST['childGuestSelect'] == 'aucun'){
+                    if ($_POST['childGuestSelect'] == 'aucun') {
                         $_POST['childGuestSelect'] === 0;
                     }
 

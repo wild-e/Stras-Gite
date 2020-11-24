@@ -14,10 +14,9 @@ class UserManager extends AbstractManager
 
     public function login(array $login)
     {
-        $query = "SELECT * FROM " . self::TABLE . " WHERE email = (:email) AND password= (:password)";
+        $query = "SELECT * FROM " . self::TABLE . " WHERE email = (:email)";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':email', $login['email'], \PDO::PARAM_STR);
-        $statement->bindValue(':password', $login['password'], \PDO::PARAM_STR);
         $statement->execute();
         return $statement->fetch();
     }
@@ -25,7 +24,8 @@ class UserManager extends AbstractManager
     public function register(array $registration)
     {
 
-        $query = "INSERT INTO " . self::TABLE . " VALUES (null, :firstname, :lastname, :email, :phoneNumber, :password, '0')";
+        $query = "INSERT INTO " . self::TABLE . " VALUES (null, :firstname, :lastname, 
+        :email, :phoneNumber, :password, '0')";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':firstname', $registration['firstname'], \PDO::PARAM_STR);
         $statement->bindValue(':lastname', $registration['lastname'], \PDO::PARAM_STR);
@@ -33,9 +33,9 @@ class UserManager extends AbstractManager
         $statement->bindValue(':phoneNumber', $registration['phoneNumber'], \PDO::PARAM_STR);
         $statement->bindValue(':password', $registration['password'], \PDO::PARAM_STR);
         $statement->execute();
-        if ($statement->execute()){
+        if ($statement->execute()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

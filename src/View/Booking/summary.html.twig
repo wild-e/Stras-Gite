@@ -31,7 +31,7 @@ Réserver chez Stras'Gîte | {{ parent() }}
         <br>
         <div class="row">
             <div class="col-sm-4">
-            {# showing and sending Number of nights to DB#}
+            {# showing and sending Number of nights to DB #}
                 <p class="item-name">{{ nightsNumber }} nuits</p>
                 <input type="text" name="nightsNumber" id="nightsNumber" value="{{ nightsNumber }}" style="visibility:hidden">
             </div>
@@ -128,8 +128,8 @@ Réserver chez Stras'Gîte | {{ parent() }}
 {% block javascript %}
 <script>
 function calculatePrice(){
-total = (document.getElementById("pricePerNight").value*document.getElementById("nightsNumber").value)+parseInt(document.getElementById("roomServiceChoice").value);
-document.getElementById("priceToPay").value = total;
+    total = (document.getElementById("pricePerNight").value*document.getElementById("nightsNumber").value)+parseInt(document.getElementById("roomServiceChoice").value);
+    document.getElementById("priceToPay").value = total;
 }
 // To calculate on page load
 calculatePrice();

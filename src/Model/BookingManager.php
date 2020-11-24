@@ -13,7 +13,7 @@ class BookingManager extends AbstractManager
     }
 
     public function book(array $booking)
-    {   
+    {
         // Retrieving client ID
         $clientID = "SELECT id FROM clients WHERE firstname = (:firstname) AND lastname= (:lastname)";
         $statement = $this->pdo->prepare($clientID);
@@ -30,8 +30,9 @@ class BookingManager extends AbstractManager
         $roomID = $statement->fetch();
 
 
-        $query = "INSERT INTO " . self::TABLE . " VALUES (null, :client_id, :room_id, DATE '".$booking['arrival']."', 
-        DATE '".$booking['departure']."', :nb_adult, :nb_child, :nb_nights, :paid_price, :room_service)";
+        $query = "INSERT INTO " . self::TABLE . " VALUES (null, :client_id, 
+        :room_id, DATE '" . $booking['arrival'] . "', 
+        DATE '" . $booking['departure'] . "', :nb_adult, :nb_child, :nb_nights, :paid_price, :room_service)";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':client_id', $clientID['id'], \PDO::PARAM_INT);
         $statement->bindValue(':room_id', $roomID['id'], \PDO::PARAM_INT);
