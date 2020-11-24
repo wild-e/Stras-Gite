@@ -33,10 +33,6 @@ class UserManager extends AbstractManager
         $statement->bindValue(':phoneNumber', $registration['phoneNumber'], \PDO::PARAM_STR);
         $statement->bindValue(':password', $registration['password'], \PDO::PARAM_STR);
         $statement->execute();
-        if ($statement->execute()) {
-            return true;
-        } else {
-            return false;
-        }
+        return true;
     }
 }

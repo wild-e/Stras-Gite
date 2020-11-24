@@ -20,6 +20,7 @@ class LoginController extends AbstractController
 
             if (password_verify($_POST['password'], $login['password'])) {
                 $_SESSION['email'] = $login['email'];
+                $_SESSION['id'] = $login['id'];
                 $_SESSION['password'] = $login['password'];
                 $_SESSION['firstname'] = $login['firstname'];
                 $_SESSION['is_admin'] = $login['is_admin'];
