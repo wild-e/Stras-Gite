@@ -57,7 +57,7 @@ class BookingManager extends AbstractManager
     {
         $query = "SELECT b.*, r.room, c.firstname, c.lastname, c.email, c.phone_number 
         FROM " . self::TABLE . " b JOIN room r ON r.id=b.room_id JOIN clients c ON 
-        c.id=client_id WHERE client_id=".$id."";
+        c.id=client_id WHERE client_id=" . $id . "";
         $statement = $this->pdo->prepare($query);
         $statement->execute();
         return $statement->fetchAll();

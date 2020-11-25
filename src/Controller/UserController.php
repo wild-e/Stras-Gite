@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Controller;
-use App\Model\BookingManager;
 
+use App\Model\BookingManager;
 
 class UserController extends AbstractController
 {
@@ -14,5 +14,4 @@ class UserController extends AbstractController
             return $this->twig->render('User/booking.html.twig', ['bookingInfo' => $bookingInfo]);
         }
     }
-
 }

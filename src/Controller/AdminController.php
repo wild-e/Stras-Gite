@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Controller;
+
 use App\Model\BookingManager;
 use App\Model\ContactManager;
-
 
 class AdminController extends AbstractController
 {
