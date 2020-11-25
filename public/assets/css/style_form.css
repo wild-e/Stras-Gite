@@ -37,17 +37,14 @@ label {
 
 .resume {
     text-align: center;
+    font-size: 26px;
 }
 
 .resume p {
     color: white;
-    font-size: 20px;
+    font-weight: bold;
 }
 
-.resume p:hover {
-    font-weight: bold;
-    font-size: 28px;
-}
 .card-body{
     text-align: center;
     align-items: center;
@@ -66,4 +63,21 @@ label {
 .erreur:hover {
     font-weight: bold;
     font-size: 22px;
+}
+
+.edit {
+    text-align: center;
+    margin-left: auto;
+}
+
+@media screen and (max-width: 767px) {
+    .contact {
+        display: block;
+        padding: 20px;
+        height: auto;
+        background-position-x: 45%;
+    }
+    .form {
+        margin-bottom: 40px;
+    }
 }
