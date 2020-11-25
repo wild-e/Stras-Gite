@@ -36,8 +36,8 @@
                     <button type="submit" name="submit" class="btn btn-primary submit">Envoyer votre message</button>
                 </form>
 
-
-        <div class="click2edit resume offset-4 col-lg-3">
+    <div class="edit col-lg-3">
+        <div class="click2edit resume">
             <h1> Stras'Gîte </h1>
             <p> 38, Quai Mullenheim <br>
             67000 Strasbourg <br><br>
@@ -46,11 +46,12 @@
                 que vous saurez apprécier pour leur calme et leur luxe. Tout ici est mis en oeuvre pour vous faire passer
                 un agréable séjour.
             </p>
-            {% if session.is_admin == 1 %}
+        </div>
+        {% if session.is_admin == 1 %}
             <button id="edit" class="submit" onclick="edit()" type="button">Edit</button>
             <button id="save" class="submit" onclick="save()" type="button">Save</button>
-            {% endif %}
-        </div>
+        {% endif %}
+    </div>
 
     </div>
 
