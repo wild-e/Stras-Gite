@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Model\UserManager;
 use App\Model\BookingManager;
+use App\Service\VerifyService;
+use DateTime;
 
 class BookingController extends AbstractController
 {
@@ -16,57 +18,13 @@ class BookingController extends AbstractController
 
         // Checking for, and displaying error after POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Variable to display error
-            $error = "";
-
             // Checking time difference between arrival and departure
-            $arrival = new \DateTime($_POST['arrival']);
-            $departure = new \DateTime($_POST['departure']);
+            $arrival = new DateTime($_POST['arrival']);
+            $departure = new DateTime($_POST['departure']);
             $nightsNumber = $arrival->diff($departure)->format('%d');
-
-            if (empty($_POST['arrival'])) {
-                $error = "Veuillez entrer une date d'arrivée !";
-                return $this->twig->render(
-                    'Booking/booking.html.twig',
-                    ['post' => $_POST, 'minDate' => $minDate, 'maxDate' => $maxDate, 'error' => $error]
-                );
-            } elseif (empty($_POST['departure'])) {
-                $error = "Veuillez entrer une date de départ !";
-                return $this->twig->render(
-                    'Booking/booking.html.twig',
-                    ['post' => $_POST, 'minDate' => $minDate, 'maxDate' => $maxDate, 'error' => $error]
-                );
-            } elseif ($nightsNumber < 3) {
-                $error = "Réservation minimum de 3 nuits !";
-                return $this->twig->render(
-                    'Booking/booking.html.twig',
-                    ['post' => $_POST, 'minDate' => $minDate, 'maxDate' => $maxDate, 'error' => $error]
-                );
-            } elseif ($arrival > $departure) {
-                $error = "Attention ! Il doit y avoir une erreur dans les dates";
-                return $this->twig->render(
-                    'Booking/booking.html.twig',
-                    ['post' => $_POST, 'minDate' => $minDate, 'maxDate' => $maxDate, 'error' => $error]
-                );
-            } elseif (empty($_POST['roomSelect'])) {
-                $error = "Veuillez choisir une chambre !";
-                return $this->twig->render(
-                    'Booking/booking.html.twig',
-                    ['post' => $_POST, 'minDate' => $minDate, 'maxDate' => $maxDate, 'error' => $error]
-                );
-            } elseif (empty($_POST['guestSelect'])) {
-                $error = "Veuillez sélectionner le nombre d'adultes !";
-                return $this->twig->render(
-                    'Booking/booking.html.twig',
-                    ['post' => $_POST, 'minDate' => $minDate, 'maxDate' => $maxDate, 'error' => $error]
-                );
-            } elseif (empty($_POST['childGuestSelect'])) {
-                $error = "Veuillez sélectionner le nombre d'enfants !";
-                return $this->twig->render(
-                    'Booking/booking.html.twig',
-                    ['post' => $_POST, 'minDate' => $minDate, 'maxDate' => $maxDate, 'error' => $error]
-                );
-            } else {
+            $verifyService = new VerifyService();
+            $error = $verifyService->bookingCheck();
+            if ($error == '') {
             //Reversing date format to please french people UX/UI
                 $displayArrival = $arrival->format('d-m-Y');
                 $displayDeparture = $departure->format('d-m-Y');
@@ -83,6 +41,10 @@ class BookingController extends AbstractController
                     'room' => $room
                     ]);
             }
+            return $this->twig->render(
+                'Booking/booking.html.twig',
+                ['post' => $_POST, 'minDate' => $minDate, 'maxDate' => $maxDate, 'error' => $error]
+            );
         }
 
     // For first show of the booking Page
