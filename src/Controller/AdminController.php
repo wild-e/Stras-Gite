@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Model\BookingManager;
+use App\Model\ContactManager;
 
 
 class AdminController extends AbstractController
@@ -18,7 +19,9 @@ class AdminController extends AbstractController
     public function messageShow()
     {
         if ($_SESSION['is_admin'] == 1) {
-            return $this->twig->render('Admin/messageShow.html.twig');
+            $contactManager = new ContactManager();
+            $messages = $contactManager->selectAll();
+            return $this->twig->render('Admin/messageShow.html.twig', ['messages' => $messages]);
         }
     }
 }

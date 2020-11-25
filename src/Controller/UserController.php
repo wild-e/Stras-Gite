@@ -15,10 +15,4 @@ class UserController extends AbstractController
         }
     }
 
-    public function writeReview()
-    {
-        if ($_SESSION['is_admin'] == 0) {
-            return $this->twig->render('User/writeReview.html.twig');
-        }
-    }
 }
