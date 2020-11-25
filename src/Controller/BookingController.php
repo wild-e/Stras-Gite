@@ -130,7 +130,6 @@ class BookingController extends AbstractController
                     // First check for already existing user email
                     $userManager = new UserManager();
                     $userEmail = ['email' => trim($_POST['email'])];
-                    // $userEmail = $userManager->emailCheck($userEmail);
                     if ($userEmail = $userManager->emailCheck($userEmail)) {
                         $error = "Cet email existe déjà dans la base de donnée. 
                         Veuillez vous connecter à votre compte pour réserver";
