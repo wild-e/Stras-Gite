@@ -10,10 +10,9 @@
                                     Nos chambres
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="/Room/show/1">Chambre 1</a>
-                                    <a class="dropdown-item" href="/Room/show/2">Chambre 2</a>
-                                    <a class="dropdown-item" href="/Room/show/3">Chambre 3</a>
-                                    <a class="dropdown-item" href="/Room/show/4">Chambre 4</a>
+                                    {% for room in rooms %}
+                                        <a class="dropdown-item" href="/Room/show/{{ room.id }}">Chambre {{ room.room }} </a>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </li>

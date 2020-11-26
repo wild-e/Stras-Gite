@@ -16,6 +16,10 @@
     width: 273px;
 }
 
+.row .presents {
+    justify-content: space-evenly;
+}
+
 .showcase-text {
     text-align: center;
 }
