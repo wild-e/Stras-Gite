@@ -11,16 +11,15 @@
                                     Nos chambres
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="/Room/show/1">Chambre 1</a>
-                                    <a class="dropdown-item" href="/Room/show/2">Chambre 2</a>
-                                    <a class="dropdown-item" href="/Room/show/3">Chambre 3</a>
-                                    <a class="dropdown-item" href="/Room/show/4">Chambre 4</a>
+                                    {% for room in rooms %}
+                                        <a class="dropdown-item" href="/Room/show/{{ room.id }}">Chambre {{ room.id }} </a>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="..\Page\activities">Activités</a></li>
-                        <li class="nav-item"><a class="nav-link" href="..\Page\map">Nous trouver</a></li>
-                        <li class="nav-item"><a class="nav-link" href="..\Page\contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="\Page\activities">Activités</a></li>
+                        <li class="nav-item"><a class="nav-link" href="\Page\map">Nous trouver</a></li>
+                        <li class="nav-item"><a class="nav-link" href="\Page\contact">Contact</a></li>
                         <div class="dropdown">
                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Mon compte
