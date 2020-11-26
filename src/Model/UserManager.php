@@ -21,9 +21,17 @@ class UserManager extends AbstractManager
         return $statement->fetch();
     }
 
+    public function emailCheck(array $email)
+    {
+        $query = "SELECT email FROM " . self::TABLE . " WHERE email = (:email)";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':email', $email['email'], \PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetchColumn();
+    }
+
     public function register(array $registration)
     {
-
         $query = "INSERT INTO " . self::TABLE . " VALUES (null, :firstname, :lastname, 
         :email, :phoneNumber, :password, '0')";
         $statement = $this->pdo->prepare($query);

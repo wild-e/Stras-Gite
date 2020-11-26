@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Controller;
-use App\Model\BookingManager;
 
+use App\Model\BookingManager;
 
 class UserController extends AbstractController
 {
@@ -12,13 +12,6 @@ class UserController extends AbstractController
             $bookingManager = new BookingManager();
             $bookingInfo = $bookingManager->selectByID($_SESSION['id']);
             return $this->twig->render('User/booking.html.twig', ['bookingInfo' => $bookingInfo]);
-        }
-    }
-
-    public function writeReview()
-    {
-        if ($_SESSION['is_admin'] == 0) {
-            return $this->twig->render('User/writeReview.html.twig');
         }
     }
 }

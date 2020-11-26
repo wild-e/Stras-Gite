@@ -27,4 +27,12 @@ class ContactController extends AbstractController
             return $this->twig->render('Page/contact.html.twig', ['post' => $_POST, 'error' => $input]);
         }
     }
+
+    public function delete(int $id)
+    {
+
+              $contactManager = new ContactManager();
+              $contactManager->delete($id);
+              header('Location:/Admin/messageShow');
+    }
 }
