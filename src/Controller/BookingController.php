@@ -80,6 +80,7 @@ class BookingController extends AbstractController
                 [
                     'firstname' => $_SESSION['firstname'],
                     'lastname' => $_SESSION['lastname'],
+                    'email' => $_SESSION['email'],
                     'arrival' => $_POST['arrival'],
                     'departure' => $_POST['departure'],
                     'roomSelect' => $_POST['roomSelect'],
