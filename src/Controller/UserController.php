@@ -14,11 +14,4 @@ class UserController extends AbstractController
             return $this->twig->render('User/booking.html.twig', ['bookingInfo' => $bookingInfo]);
         }
     }
-
-    public function writeReview()
-    {
-        if ($_SESSION['is_admin'] == 0) {
-            return $this->twig->render('User/writeReview.html.twig');
-        }
-    }
 }

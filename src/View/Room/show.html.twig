@@ -14,7 +14,7 @@
         <a href="/Room/delete/{{ room.id }}">Supprimer</a>
         <a href="/Room/index">Retour</a>
     {% else %}
-        <h1>Chambre {{ room.id }}</h1>
+        <h1>Chambre {{ room.room }}</h1>
         <p> {{ room.description|raw }}</p>
     {% endif %}
 
