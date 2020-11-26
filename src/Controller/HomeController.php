@@ -24,8 +24,11 @@ class HomeController extends AbstractController
     {
         $directory = dir("./assets/images/room/");
         $roomPictures = [];
-        while($entry = $directory->read()) {
-            if($entry<> '.' && $entry<> '..' && $entry<> 'index.php' && $entry<> 'fond.jpg' && $entry<> '.DS_Store'  ) {
+        while ($entry = $directory->read()) {
+            if (
+                $entry <> '.' && $entry <> '..' && $entry <> 'index.php' && $entry <> 'fond.jpg'
+                && $entry <> '.DS_Store'
+            ) {
                 $roomPictures[] = $entry;
             }
         }

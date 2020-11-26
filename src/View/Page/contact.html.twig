@@ -60,16 +60,17 @@
 {% endblock %}
 
 {% block javascript %}
+{{ parent() }}
+    {% if session.is_admin == 1 %}
+            <script>
+                var edit = function() {
+                $('.click2edit').summernote({focus: true});
+            };
 
-    <script>
-        var edit = function() {
-        $('.click2edit').summernote({focus: true});
-    };
-
-        var save = function() {
-        var markup = $('.click2edit').summernote('code');
-        $('.click2edit').summernote('destroy');
-    };
-    </script>
-
+                var save = function() {
+                var markup = $('.click2edit').summernote('code');
+                $('.click2edit').summernote('destroy');
+            };
+            </script>
+    {% endif %}
 {% endblock %}

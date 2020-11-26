@@ -22,7 +22,7 @@ class BookingController extends AbstractController
             // Checking time difference between arrival and departure
             $arrival = new DateTime($_POST['arrival']);
             $departure = new DateTime($_POST['departure']);
-            $nightsNumber = $arrival->diff($departure)->format('%d');
+            $nightsNumber = $arrival->diff($departure)->format('%a');
             $verifyService = new VerifyService();
             $error = $verifyService->bookingCheck();
             if ($error == '') {
