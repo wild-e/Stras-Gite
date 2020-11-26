@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Controller;
-use App\Model\BookingManager;
 
+use App\Model\BookingManager;
 
 class UserController extends AbstractController
 {
